@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="jp.juggler.MushroomSequencer"
+      android:versionCode="7"
+      android:versionName="1.7"
+      android:installLocation="auto"
+>
+    <uses-sdk
+		android:minSdkVersion="4"
+    	android:targetSdkVersion="10" 
+   	/>
+
+    <application android:icon="@drawable/icon" android:label="@string/name_app">
+        <activity
+        	android:name=".ActMain"
+            android:label="@string/name_mushroom"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
+            android:windowSoftInputMode="stateHidden"
+        >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.adamrocker.android.simeji.ACTION_INTERCEPT" />
+                <category android:name="com.adamrocker.android.simeji.REPLACE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+	            <action android:name="android.intent.action.SEND" />
+	            <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+	            <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+		<activity
+        	android:name=".ActPref"
+            android:label="@string/name_app"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
+            android:windowSoftInputMode="stateHidden"
+        />
+		<activity
+        	android:name=".ActHistory"
+            android:label="@string/name_app"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
+            android:windowSoftInputMode="stateHidden"
+        />
+		
+        <receiver
+			android:name=".Receiver1"
+          	android:label="@string/name_app"
+          	android:enabled="false"
+		>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+		</receiver>
+		
+		<provider
+        	android:name=".DataProvider"
+        	android:authorities="jp.juggler.MushroomSequencer"
+        	android:exported="false"
+        />
+    </application>
+</manifest>

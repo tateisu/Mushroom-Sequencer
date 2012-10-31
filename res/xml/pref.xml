@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+>
+	<PreferenceCategory android:title="@string/pc_notification">
+		<CheckBoxPreference
+			android:key="notification_enabled"
+		    android:title="@string/notification_enabled_title"
+	    	android:summary="@string/notification_enabled_summary"
+
+	    	android:defaultValue="false"
+	    	android:disableDependentsState="false"
+	    />
+		<CheckBoxPreference
+			android:key="notification_whitetext"
+		    android:title="@string/notification_whitetext_title"
+	    	android:summary="@string/notification_whitetext_summary"
+
+	    	android:defaultValue="false"
+	    	android:dependency="notification_enabled"
+	    />
+	</PreferenceCategory>
+
+</PreferenceScreen>

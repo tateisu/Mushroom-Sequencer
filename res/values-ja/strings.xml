@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_app">マッシュルーム シーケンサー</string>
+    <string name="name_mushroom">シーケンサー</string>
+
+    <string name="mush_target_caption">マッシュルーム対象テキスト</string>
+    <string name="mush_list_caption">適用するマッシュルームを選ぶ</string>
+    <string name="append">追記</string>
+    <string name="selection">範囲</string>
+
+    <string name="menu_history">履歴</string>
+    <string name="menu_setting">設定</string>
+
+    <string name="notification_expand_desc">タップするとマッシュルームを編集できます</string>
+    <string name="copy_to_clipboard">テキストをクリップボードにコピーしました</string>
+
+    <string name="pc_notification">通知領域</string>
+    
+    <string name="notification_enabled_title">通知領域に常駐</string>
+    <string name="notification_enabled_summary">有効にすると、このアプリが通知領域に常駐します。mushroom非対応のIMEと共に使う時に便利かもしれません。</string>
+    
+    <string name="notification_whitetext_title">通知領域の文字を白くする</string>
+    <string name="notification_whitetext_summary">有効にすると、通知領域の文字を白くします。黒背景のテーマで視認性が向上するかもしれません。</string>
+
+    <string name="dash3">…</string>    
+    
+    <string-array name="history_context_menu">
+        <item>このテキストを入力</item>
+        <item>クリップボードにコピー</item>
+    </string-array>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_app">Mushroom Sequencer</string>
+    <string name="name_mushroom">Sequencer</string>
+
+    <string name="mush_target_caption">mushroom target text</string>
+    <string name="mush_list_caption">choose mushroom to apply</string>
+    <string name="append">append</string>
+    <string name="selection">range</string>
+
+    <string name="menu_history">history</string>
+    <string name="menu_setting">setting</string>
+
+    <string name="notification_expand_desc">tap to open.</string>
+    <string name="copy_to_clipboard">text is copied to clipboard.</string>
+
+    <string name="pc_notification">notification</string>
+    
+    <string name="notification_enabled_title">stay to notification area</string>
+    <string name="notification_enabled_summary">if checked, this app stay to notification area. (for the IME that does not support mushroom.) </string>
+    
+    <string name="notification_whitetext_title">white text</string>
+    <string name="notification_whitetext_summary">if checked, set color of notification text to white. </string>
+
+    <string name="dash3">…</string>
+    
+    
+    <string-array name="history_context_menu">
+        <item>Input this text</item>
+        <item>Copy to clipboard</item>
+    </string-array>
+
+</resources>

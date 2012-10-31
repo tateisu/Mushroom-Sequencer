@@ -6,4 +6,5 @@
     android:maxLines="3"
     android:id="@+id/etMushText"
     android:gravity="fill_horizontal"
+    android:inputType="textMultiLine"
 />

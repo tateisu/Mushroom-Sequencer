@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.util.SparseArray;
 
 public class DataProvider  extends ContentProvider{
 	static final String TAG="DataProvider";
@@ -65,7 +66,7 @@ public class DataProvider  extends ContentProvider{
 	
 	DBHelper1 helper;
 	UriMatcher uri_matcher;
-	HashMap<Integer,MatchResult> match_map;
+	SparseArray<MatchResult> match_map;
 	
 	int  addUriMatching(int match_next,TableMeta meta){
 		int match_dir =  match_next;
@@ -88,7 +89,7 @@ public class DataProvider  extends ContentProvider{
 
 		// URIマッチングの初期化
 		uri_matcher= new UriMatcher(UriMatcher.NO_MATCH);
-		match_map = new HashMap<Integer,MatchResult>();
+		match_map = new SparseArray<MatchResult>();
 		int match_next = 1;
 //		match_next = addUriMatching( match_next,account );
 		match_next = addUriMatching( match_next,history );

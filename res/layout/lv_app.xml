@@ -10,6 +10,7 @@
 	  android:layout_height="40dp"
 	  android:layout_margin="2dp"
 	  android:id="@+id/icon"
+	  android:contentDescription="icon"
 	/>
 	<TextView
 	  android:layout_height="wrap_content"

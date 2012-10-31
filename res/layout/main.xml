@@ -71,6 +71,7 @@
 	    android:maxLines="8"
 	    android:id="@+id/etMushText"
 	    android:gravity="fill_horizontal"
+	    android:inputType="textMultiLine"
 	/>
 
 	<TextView

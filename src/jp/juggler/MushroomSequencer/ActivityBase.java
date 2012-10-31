@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
-public class ActivityBase extends Activity {
+public abstract class ActivityBase extends Activity {
 	static final String TAG = "MushSequencer";
 	Handler ui_handler;
 	ActivityBase self = this;

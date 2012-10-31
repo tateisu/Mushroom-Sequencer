@@ -1,7 +1,5 @@
 package jp.juggler.MushroomSequencer;
 
-import java.util.HashMap;
-
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;

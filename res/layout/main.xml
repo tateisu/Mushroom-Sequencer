@@ -61,7 +61,7 @@
 	<TextView
     	android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content"
-	    android:text="@string/mush_target_caption"
+	    android:text="@string/target_text_caption"
 	    android:textColor="#ffffff"
 	    android:textSize="12sp"
 	/> 
@@ -77,7 +77,7 @@
 	<TextView
     	android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content"
-	    android:text="@string/mush_list_caption"
+	    android:text="@string/mushroom_list_caption"
 	    android:textColor="#ffffff"
 	    android:textSize="12sp"
 	/> 

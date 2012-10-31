@@ -38,7 +38,7 @@ public class Util {
 		Notification n = new Notification();
 		n.icon = ( no_icon ? R.drawable.empty : R.drawable.icon );
 		n.when = ( Build.VERSION.SDK_INT >= 9 ? -Long.MAX_VALUE : Long.MAX_VALUE);
-		n.setLatestEventInfo(context,context.getString(R.string.name_app),context.getString(R.string.notification_expand_desc),pending_intent);
+		n.setLatestEventInfo(context,context.getString(R.string.app_name),context.getString(R.string.notification_expand_desc),pending_intent);
 		n.flags |= Notification.FLAG_NO_CLEAR ;
 		n.flags |= Notification.FLAG_ONGOING_EVENT ;
 		if( whitetext ){

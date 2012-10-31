@@ -56,7 +56,7 @@ public class ActMain extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         this.getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
         setContentView(R.layout.main);
-        setTitle(R.string.name_app);
+        setTitle(R.string.app_name);
         ui_handler = new Handler();
         inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
         imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
@@ -79,16 +79,13 @@ public class ActMain extends Activity implements View.OnClickListener{
         }
         
         etMushText.setOnFocusChangeListener(new View.OnFocusChangeListener(){
-    		@Override
-    		public void onFocusChange(View v, boolean flag){
+    		@Override public void onFocusChange(View v, boolean flag){
     			if(flag == false) imm.hideSoftInputFromWindow(v.getWindowToken(),0);
     		}
     	});
         
         etMushText.selection_change_listener = new MyEditText.SelectionChangeListener() {
-			@Override
-			public void onSelectionChanged(int start, int end) {
-				Log.d(TAG,"onSelectionChanged "+start+","+end);
+			@Override public void onSelectionChanged(int start, int end) {
 				cbSelection.setEnabled( start < end );
 			}
 		};
@@ -99,9 +96,7 @@ public class ActMain extends Activity implements View.OnClickListener{
         		
 
 		listview.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+			@Override public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
 				AppItem item  = adapter.getItem(position);
 				try{
 					Intent intent = new Intent(MUSHROOM_ACTION);
@@ -151,6 +146,24 @@ public class ActMain extends Activity implements View.OnClickListener{
 			}
 		}
 	}
+	
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()){
+		case R.id.btnKeyboard:
+			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+			break;
+		case R.id.btnEditMenu:
+			if( etMushText != null ) etMushText.performLongClick();
+			break;
+		case R.id.btnComplete:
+			complete();
+			break;
+		}
+	}
+	
+	///////////////////////////////////////////////////////
+	
 
 	void replace_text(String text){
 		if(text!=null && text.length() > 0){
@@ -190,12 +203,40 @@ public class ActMain extends Activity implements View.OnClickListener{
 				sb.append( text );
 				//
 				etMushText.setText(sb.toString());
-				etMushText.setSelection(text.length());
+				etMushText.setSelection(sb.length(),sb.length());
+			}
+			
+			if( Util.pref(self).getBoolean(Const.KEY_AUTO_FINISH,false) ){
+				complete();
 			}
 		}
 	}
     
-    
+
+	
+	void complete(){
+		imm.hideSoftInputFromInputMethod(etMushText.getWindowToken(),0);
+		if( etMushText != null ){
+			String text = etMushText.getText().toString();
+			//
+			HistoryItem item = new HistoryItem();
+			item.text = text;
+			item.when = System.currentTimeMillis();
+			item.save( getContentResolver() );
+			//
+			if( MUSHROOM_ACTION.equals( getIntent().getAction() ) ){
+				Intent data = new Intent();
+				data.putExtra(MUSHROOM_REPLACE_KEY,text );
+				setResult(RESULT_OK, data);
+			}else{
+				ClipboardManager cm = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+				cm.setText(text);
+				Toast.makeText(self,R.string.copy_to_clipboard,Toast.LENGTH_SHORT).show();
+			}
+			finish();				
+		}
+	}
+	
     ////////////////////////////////////////////////////////////////////////
 
 
@@ -320,41 +361,5 @@ public class ActMain extends Activity implements View.OnClickListener{
 	    }
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch(v.getId()){
-		case R.id.btnKeyboard:
-			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-			break;
-		case R.id.btnEditMenu:
-			if( etMushText != null ) etMushText.performLongClick();
-			break;
-		case R.id.btnComplete:
-			complete();
-			break;
-		}
-	}
-	
-	void complete(){
-		imm.hideSoftInputFromInputMethod(etMushText.getWindowToken(),0);
-		if( etMushText != null ){
-			String text = etMushText.getText().toString();
-			//
-			HistoryItem item = new HistoryItem();
-			item.text = text;
-			item.when = System.currentTimeMillis();
-			item.save( getContentResolver() );
-			//
-			if( MUSHROOM_ACTION.equals( getIntent().getAction() ) ){
-				Intent data = new Intent();
-				data.putExtra(MUSHROOM_REPLACE_KEY,text );
-				setResult(RESULT_OK, data);
-			}else{
-				ClipboardManager cm = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
-				cm.setText(text);
-				Toast.makeText(self,R.string.copy_to_clipboard,Toast.LENGTH_SHORT).show();
-			}
-			finish();				
-		}
-	}
+
 }

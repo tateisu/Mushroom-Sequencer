@@ -2,7 +2,7 @@
 <PreferenceScreen
 	xmlns:android="http://schemas.android.com/apk/res/android"
 >
-	<PreferenceCategory android:title="@string/pc_notification">
+	<PreferenceCategory android:title="@string/notification">
 		<CheckBoxPreference
 			android:key="notification_enabled"
 		    android:title="@string/notification_enabled_title"
@@ -20,5 +20,14 @@
 	    	android:dependency="notification_enabled"
 	    />
 	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/laziness">
+		<CheckBoxPreference
+			android:key="auto_finish"
+		    android:title="@string/auto_finish_title"
+	    	android:summary="@string/auto_finish_summary"
 
+	    	android:defaultValue="false"
+	    />
+	</PreferenceCategory>
+	
 </PreferenceScreen>
